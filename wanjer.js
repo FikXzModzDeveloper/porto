@@ -29,7 +29,7 @@ function updateBirthdayCountdown() {
     cdData = calculateBirthdayCountdown();
     const newDay = cdData.days;
     el.innerHTML = `<div>${cdData.days} hari ${String(cdData.hours).padStart(2,'0')}:${String(cdData.mins).padStart(2,'0')}:${String(cdData.secs).padStart(2,'0')}</div>
-                    <div style="font-size: 11px; opacity: 0.8; line-height: 1; margin-top: -5px;">tahun ${cdData.bDay.getFullYear()} · Desember 20</div>`;
+                    <div class="countdown-subtext">tahun ${cdData.bDay.getFullYear()} · Desember 20</div>`;
     if (cdData.prevDay !== null && newDay < cdData.prevDay) {
         el.classList.remove('pulse');
         void el.offsetWidth;
@@ -77,12 +77,19 @@ const sendForm = document.getElementById('sendMessageForm');
 const notifBox = document.getElementById('notif');
 
 function showNotif(msg, success = true) {
+    if (!notifBox) return;
     notifBox.textContent = msg;
-    notifBox.style.display = 'block';
-    notifBox.style.background = success ? 'rgba(40,167,69,.15)' : 'rgba(220,53,69,.15)';
-    notifBox.style.border = `1px solid ${success ? 'rgba(40,167,69,.4)' : 'rgba(220,53,69,.4)'}`;
-    notifBox.style.color = success ? '#28a745' : '#dc3545';
-    setTimeout(() => notifBox.style.display = 'none', 4000);
+    notifBox.classList.remove('notif-success', 'notif-error');
+    if (success) {
+        notifBox.classList.add('notif-success');
+    } else {
+        notifBox.classList.add('notif-error');
+    }
+    notifBox.classList.add('is-visible');
+    
+    setTimeout(() => {
+        notifBox.classList.remove('is-visible');
+    }, 4000);
 }
 
 if (sendForm) {
