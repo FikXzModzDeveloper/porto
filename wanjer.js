@@ -44,8 +44,15 @@ setInterval(updateBirthdayCountdown, 1000);
 function closePopup() {
     const popup = document.getElementById('popupWelcome');
     const content = document.querySelector('.popup-content');
+    const quoteText = document.querySelector('.quote-text');
+
     popup.classList.add('popup-exit');
     content.classList.add('popup-content-exit');
+
+    if (quoteText) {
+        quoteText.classList.add('start-typing');
+    }
+
     if (!musicPlayed) {
         backgroundMusic.play().then(() => musicPlayed = true).catch(() => {});
     }
@@ -111,7 +118,7 @@ if (sendForm) {
             const r = await fetch(`https://api.fikmydomainsz.xyz/tools/sendmail/send?${params}`);
             const res = await r.json();
             if (res.success) {
-                showNotif('Pesan berhasil terkirim! Terima kasih 😊', true);
+                showNotif('Successfuly Sending Message', true);
                 sendForm.reset();
             } else {
                 showNotif(res.error || 'Gagal mengirim, coba lagi.', false);
@@ -120,4 +127,4 @@ if (sendForm) {
             showNotif('Error jaringan, cek koneksi Anda.', false);
         }
     });
-}
+} 
