@@ -449,7 +449,7 @@ body::before {
     border-color: rgba(0, 123, 255, 0.4);
 }
 .sertifikat-gallery img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     display: block;
 }
