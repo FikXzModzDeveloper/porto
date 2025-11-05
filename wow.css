@@ -431,8 +431,8 @@ body::before {
     font-size: 13px;
 }
 .sertifikat-gallery {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 15px;
 }
 .sertifikat-gallery a {
@@ -450,6 +450,7 @@ body::before {
 }
 .sertifikat-gallery img {
     width: 100%;
+    max-width: 100%;
     height: auto;
     display: block;
 }
