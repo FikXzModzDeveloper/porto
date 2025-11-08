@@ -218,6 +218,7 @@ body::before {
     white-space: nowrap;
     border-right: 2px solid rgba(255, 255, 255, 0.5);
     max-width: 0;
+    margin-top: 5px;
 }
 .quote-text.start-typing {
     animation: typingQuote 4s steps(40, end) forwards, blink-caret-quote 0.75s step-end infinite;
